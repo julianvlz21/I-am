@@ -22,14 +22,13 @@ for idx, menu in enumerate(productos):
 
 ##ENTRADA USUARIO
 opcion = int(input("Qué producto va a llevar: "))
-while opcion <= 5:
+while opcion == len(productos):
 
     print("\n5. Para salir")
     if opcion == 1:
-        cuantos = int(input(f"Cuantas {productos[0]} vas a llevar: "))
-        for total in enumerate(productos[0]):
-            m = float(costo * cuantos)
-            print (m)
+        cuantos = int(input(f"Cuantas {productos[0]['productos']} vas a llevar: "))
+        for total in enumerate(productos):
+            print ({'costo'[0]} * cuantos)
 
 
     elif opcion == 5:
