@@ -18,17 +18,17 @@ students.append({
 for i, list in enumerate(students):
     m = (f"{i+1}. student: {list['name']} {list['last_name']}")
 
-##Story 2 - record of class and notes
+##Story 2 - record of subjects and grades
 
-    subjects = []
-    number_subjects = int(input("Enter the number of sugjects: "))
-    for i, sub in enumerate(subjects):
-        subject = input("Add the name of subject: ")
-    subjects.append({
-        "subject": subject
-    })
-students.append({
-    "name": name,
-    "last_name": last_name
-    "subject": subject
-    })
+#     subjects = []
+#     number_subjects = int(input("Enter the number of sugjects: "))
+#     for i, sub in enumerate(subjects):
+#         subject = input("Add the name of subject: ")
+#     subjects.append({
+#         "subject": subject
+#     })
+# students.append({
+#     "name": name,
+#     "last_name": last_name
+#     "subject": subject
+#     })

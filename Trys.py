@@ -123,31 +123,36 @@ import random
 ##PROGRAM TO PARKING WITH 10 SPACES 
 
 #MENU FOR USER
-plates = ["libre"]*10
+# plates = ["libre"]*10
 
-option = None
-while True:
-    print("\n", "-" *15, "WELCOME TO THE PARKING", "-" *15)
-    print("\n1. Show the number of spaces avalibles\n2. Enter your car\n3. Take out your car\n4. Exit menu")
+# option = None
+# while True:
+#     print("\n", "-" *15, "WELCOME TO THE PARKING", "-" *15)
+#     print("\n1. Show the number of spaces avalibles\n2. Enter your car\n3. Take out your car\n4. Exit menu")
 
-    option = input("You select an option: ")
-#Show the number of availables spaces 
-    occupied = len(plates)
-    spaces = occupied - len(plates)
-    if option == "1":
-        # print(f"\nIn the parking there are {spaces} occupieds spaces")
-        # print(f"There are {occupied} availables spaces in the parking")
-        for idx, plate in enumerate(plates):
-            print (f"In the spaces {idx+1}. is the car with the plate: {plate}")
-#Enter the car to the parking:    
-    elif option == "2":
-        new = input("Enter the plate of your car: ")
-        for idx, change in enumerate(plates):
-            if change == "libre":
-                plates[idx] = new
-            break
+#     option = input("You select an option: ")
+# #Show the number of availables spaces 
+#     occupied = len(plates)
+#     spaces = occupied - len(plates)
+#     if option == "1":
+#         # print(f"\nIn the parking there are {spaces} occupieds spaces")
+#         # print(f"There are {occupied} availables spaces in the parking")
+#         for idx, plate in enumerate(plates):
+#             print (f"In the spaces {idx+1}. is the car with the plate: {plate}")
+# #Enter the car to the parking:    
+#     elif option == "2":
+#         new = input("Enter the plate of your car: ")
+#         for idx, change in enumerate(plates):
+#             if change == "libre":
+#                 plates[idx] = new
+#             break
 
-    elif option == "3":
-        print (plates.copy())
-        exit = input("Take out your car: ")
-        plates.remove(exit)
+#     elif option == "3":
+#         print (plates.copy())
+#         exit = input("Take out your car: ")
+#         plates.remove(exit)
+###
+
+# Client management system
+# This module allows registering clients with validation
+
