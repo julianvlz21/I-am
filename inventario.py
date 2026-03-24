@@ -53,8 +53,9 @@ while True:
         for detalle in inventario:
             print(f"{detalle['ID']}. Producto: {detalle['nombre']} | Precio: {detalle['precio']} | Cantidad: {detalle['cantidad']}")
     
-    elif opcion == "3":
-
+    elif opcion == "3":     
+        total=sum(valor['precio']*valor['cantidad']for valor in inventario)
+        print(total)
     # elif opcion == 4:
     #     buscar_producto = int(input("Introduce el ID a buscar: "))   
     #     for producto in inventario:
