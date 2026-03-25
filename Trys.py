@@ -156,3 +156,67 @@ import random
 # Client management system
 # This module allows registering clients with validation
 
+inventario = []
+
+def agregar_productos(id, nombre, precio, cantidad):#Se crea un diccioanrio que gruarde los valores para cada producto, para posteriormente agregar el producto a la lista
+    producto = {
+        "id": id,
+        "nombre": nombre,
+        "precio": precio,
+        "cantidad": cantidad
+    }
+
+    inventario.append(producto)
+    print("\n\033[1;32m===============¡¡¡Registro exitoso!!!===============\033[0m")
+
+def mostrar_inventario(inventario):
+    if not inventario:
+        print("\n\033[34mInventario vacio\033[0m")
+    else:
+        for producto in inventario:
+            print(f"\033[34m{producto['id']}.\033[0m Producto: {producto['nombre']} | Precio: {producto['precio']} | Cantidad: {producto['cantidad']}")
+
+def calcular_estadisticas(inventario):
+    total_precio = sum(valor['precio']*valor['cantidad']for valor in inventario)
+    print(total_precio)
+
+    total_inventario = sum(cantidad['cantidad']for cantidad in inventario)
+    print (total_inventario)
+
+#Validaciones
+def validar_datos():
+    while True:
+        nombre = input("Nombre: ")
+        precio = float(input("Precio: "))
+        cantidad = int(input("Cantidad: "))
+        try:
+            if nombre == "" or precio <= 0 or cantidad <= 0:
+                print("Datos erroneos, intente de nuevo")
+                continue
+            break
+        except:
+            ("\n\033[1,31m¡¡¡Valor invalido, intenta de nuenvo!!!\033[0m")
+        return nombre, precio, cantidad
+        
+        
+
+
+#menú para usuario
+while True:
+    print("\n\033[1;34m------------------------MENÚ REGISTRO INVENTARIO------------------------\033[0m")
+    print("""
+    \033[1;34m 1.\033[0m Agregar producto
+    \033[1;34m 2.\033[0m Mostrar inventario
+    \033[1;34m 3.\033[0m Calcular estadísticas
+    \033[1;34m 4.\033[0m Salir
+
+""")    
+    opcion = input("Selecciona una de las opciones: ")
+
+    if opcion == "1":
+        validar_datos
+
+    elif opcion == "2":
+        mostrar_inventario(inventario)
+
+
