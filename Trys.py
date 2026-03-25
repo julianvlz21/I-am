@@ -155,4 +155,23 @@ import random
 
 # Client management system
 # This module allows registering clients with validation
+# def generato_clients (limit):
+#     client = 1
 
+#     while client <= limit:
+#         client * 7
+#         client += 1 
+# obaaaa = generato_clients(10)
+
+
+# for c in (obaaaa):
+#     print(c)
+# # print(next(ob))
+# # print("Kevin prince wuatem")
+# # print(next(ob))
+
+counter = 0
+
+for q in range(1, 5):
+    counter += 1
+    print (counter)
