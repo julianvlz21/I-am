@@ -190,24 +190,6 @@ def si_vacio (valor):
 def si_0_negativo(valor):
     return int(valor) <= 0
 
-
-# def validar_datos():
-    # while True:
-        # nombre = input("Nombre: ")
-        # precio = float(input("Precio: "))
-        # cantidad = int(input("Cantidad: "))
-        # try:
-        #     if nombre == "" or precio <= 0 or cantidad <= 0:
-        #         print("Datos erroneos, intente de nuevo")
-        #         continue
-        #     break
-        # except:
-        #     ("\n\033[1,31m¡¡¡Valor invalido, intenta de nuenvo!!!\033[0m")
-        # return nombre, precio, cantidad
-        
-        
-
-
 #menú para usuario
 while True:
     print("\n\033[1;34m------------------------MENÚ REGISTRO INVENTARIO------------------------\033[0m")
@@ -221,7 +203,7 @@ while True:
     opcion = input("Selecciona una de las opciones: ")
 
     if opcion == "1":
-        print("\033[32m CAPACIDAD PARA 20 PRODUCTOS\033[0m") 
+        # print("\033[32m CAPACIDAD PARA 20 PRODUCTOS\033[0m") 
         cantidad = input("\nCuántos producto va a agregar: ")
         while not cantidad.isdigit():
             print("\n\033[1;31m ¡¡¡Valor invalido, intenta de nuevo!!!\033[0m")
@@ -229,8 +211,8 @@ while True:
             
         if si_0_negativo (cantidad):
             print("\n\033[1;31m =====!!!El valor no puede ser 0 o negaitivo¡¡¡=====\033[0m")
-        elif int(cantidad) > 20:
-            print("\033[32m CAPACIDAD PARA 20 PRODUCTOS\033[0m")
+        # elif int(cantidad) > 20:
+        #     print("\033[32m CAPACIDAD PARA 20 PRODUCTOS\033[0m")
         else:
             for n in range(int(cantidad)):
                 while True:
@@ -249,7 +231,7 @@ while True:
                         print("\n\033[1;31m¡¡¡Valor invalido, intente de nuenvo!!!\033[0m")
                     
                 agregar_productos(contador, nombre, precio, cantidad_)
-                print(len(inventario))
+                # print(len(inventario))
     
     elif opcion == "2":
         mostrar_inventario(inventario)
