@@ -1,7 +1,7 @@
 ##Inventario de tienda
 #Validaciones
 # def si_vacio (valor):
-#     return valor == False
+#     return valor == str("")
 
 def si_0_negativo(valor):
     return int(valor) <= 0
@@ -27,39 +27,37 @@ while True:
             print("\n\033[1;31m ¡¡¡Valor invalido, intenta de nuevo!!!\033[0m")
             cantidad = input("Cuántos producto va a agregar: ")
             
-        if not cantidad:
+        if si_0_negativo (cantidad):
             print("\n\033[1;31m =====!!!El valor no puede ser 0 o negaitivo¡¡¡=====\033[0m")
         elif int(cantidad) > 20:
             print("\033[32m CAPACIDAD PARA 20 PRODUCTOS\033[0m") 
         else:
-            None
+            for n in range(int(cantidad)):
+                while True:
+                    nombre_pro = input("\nEscribe el nombre del productos: ")
+                    if not nombre_pro:
+                        print("\033[34m NOMBRE OBLIGATORIO\033[0m")
+                    else:
+                        try:
+                            precio = float(input("Agrega un precio al producto: "))
+                            cantidad_pro= int(input("Escribe la cantidad de productos: "))
+                            contador += 1
 
-        for n in range(int(cantidad)):
-            while True:
-                nombre_pro = input("\nEscribe el nombre del productos: ")
-                if not nombre_pro:
-                    print("\033[34m NOMBRE OBLIGATORIO\033[0m")
-                else:
-                    None
-                try:
-                    precio = float(input("Agrega un precio al producto: "))
-                    cantidad_pro= int(input("Escribe la cantidad de productos: "))
-
-                    if si_0_negativo(precio) or si_0_negativo(cantidad_pro):
-                        print("\n\033[1;31m =====!!!El valor no puede ser 0 o negaitivo¡¡¡=====\033[0m")
-                    else:    
-                        contador += 1
-                        break
-                except:
-                    print("\n¡¡¡Valor invalido, intenta de nuenvo!!!")
-
-            producto = {"ID": contador,
-                "nombre": nombre_pro,
-                "precio": precio,
-                "cantidad": cantidad_pro
-            }
-            inventario.append(producto)
-            print(len(inventario))
+                            if si_0_negativo(precio) or si_0_negativo(cantidad_pro):
+                                print("\n\033[1;31m =====!!!El valor no puede ser 0 o negaitivo¡¡¡=====\033[0m")
+                            else:    
+                                break
+                        except:
+                            print("\n¡¡¡Valor invalido, intenta de nuenvo!!!")
+                            
+            
+                producto = {"ID": contador,
+                    "nombre": nombre_pro,
+                    "precio": precio,
+                    "cantidad": cantidad_pro
+                }
+                inventario.append(producto)
+                print(len(inventario))
 
         print("\n\033[1;32m===============¡¡¡Registro exitoso!!!===============\033[0")
 
@@ -74,10 +72,10 @@ while True:
     
     elif opcion == "3":     
         total_precio=sum(valor['precio']*valor['cantidad']for valor in inventario)
-        print(f"El valor total del inventario es: {total_precio}")
+        print(f"\nEl valor total del inventario es: \033[32m${total_precio}\033[0m")
 
         total_inventario =sum(suma_inventario['cantidad']for suma_inventario in inventario)
-        print (f"Hay {total_inventario} productos en el inventario")
+        print (f"Hay\033[32m {total_inventario}\033[0m productos en el inventario")
 
     elif opcion == 4:
         print("\n\033[34m ===============ADIOS===============\033[0m")
