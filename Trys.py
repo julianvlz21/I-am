@@ -1,4 +1,4 @@
-##Programa para validar si un número es divisible por 5
+    ##Programa para validar si un número es divisible por 5
 
 # num = int(input("Enter a number to know if to be divided by 5: "))
 # last_digit = num % 10
@@ -273,6 +273,7 @@ def calculate_statistic(inventory):
     print(total_quantity)
 
     expensive_product = max(inventory, key=lambda e: e['price'])
+    print(expensive_product)
 
 def search_products(inventory, name_product):
     for product in inventory:
