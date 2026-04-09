@@ -1,0 +1,36 @@
+html{
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.video_fondo{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+.video_fondo video{
+height: 100%;
+width: 100%;
+overflow: cover;
+}
+.contenidos{
+
+    background-color: rgba(63, 71, 69, 0.295);
+    position: relative;
+    top: 35%;
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.link{
+    font-size: 50px;
+    color: aliceblue;
+    font-weight:bold ;
+    text-decoration: none;
+}

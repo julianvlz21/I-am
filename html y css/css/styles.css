@@ -1,7 +1,19 @@
-h1 {
-    color: blue;
+body {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhD3IUtc1jWYVzhc6yuhPemCB-HehHRzAVaA&s');
+    background-repeat: no-repeat; /* No se repite */
+    background-size: cover;       /* Cubre toda la pantalla */
+    background-position: center;  /* Centrada */
+    background-attachment: fixed;
+}
+.titulos {
+    color: rgb(11, 11, 243);
+    font-family: 'Lucida Sans';
+    font-weight: bold;
+    text-align: start;
+    text-decoration:overline;
 }
 
 .importante {
-    color: rebeccapurple;
+    color: rgb(101, 49, 153);
+    font-family: 'lucida sans';
 }
