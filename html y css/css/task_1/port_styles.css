@@ -5,33 +5,130 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background:linear-gradient(to right, rgb(0, 0, 0), rgb(63, 63, 65), rgb(21, 24, 21));
-    width: 100%;
-    height: 50px;
-    margin: 0;
+body {
+    height: 100vh;
+    background-color: #ffffff;
+    background:linear-gradient(to right, rgb(0, 0, 0), rgb(15, 15, 17), rgb(44, 33, 18), rgb(17, 14, 4), rgb(12, 9, 1));
+    /* background-image: url(../image/fondo_portafolios.jpg); */
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
 }
 
-nav h1 {
-    font-size: 25px;
-    color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top:3% ;
+li {
+list-style: none;
 }
 
 a {
-padding-left: 80%;
-padding-top:auto;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    /* transition: 1s, width 1s, height 1s; */
+}
+
+a:hover {
+    color: #fff6c0;
+    background-color: #0000003b;
+    height: 0;
+    width: 0;
+    padding: 35% 20%;
+    margin: 0;
+    /*
+    font-size: 18px;*/
+}
+header {
+    position: relative;
+    padding: 0 2rem;
+    background-image: url(../image/paisaje.jpg);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5)
+    /* background:linear-gradient(to right, rgb(0, 0, 0), rgb(63, 63, 65), rgb(21, 24, 21));
+    font-weight:bold */
+}
+
+section {
+    color: #ffffff;
+    font-size: 0,7rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    color: #fff6c0;
+}
+
+h3{
+    margin-bottom: 1rem;
 
 }
 
-#about_me {
-    padding-top: 70%;
-    margin-bottom:0;
-    color: aqua;
+p {
+    margin-bottom: 0.5rem;
+    justify-content: center;
+}
+.bar {
+    width: 110%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.bar .autor {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.bar .options {
+    display: flex;
+    gap: 2rem;
+}
+
+.bar .dropdown {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor:pointer;
+}
+
+.myself{
+    height: 30%;
+    width: 30%;
+    margin-top: 5%;
+    margin-left: 35%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5) ;
+    transition: 0.5s ease;
+}
+section .myself:hover {
+    cursor: url("../image/mano.png"), auto;
+    transform: scale(1.05);
+}
+
+section .myself:active {
+    transform: scale(0.95);
+}
+
+#about_me{
+    padding-top: 2%;
+}
+
+#projects{
+    padding-top: 2%;
+
+}
+
+#contact{
+    padding-top: 2%;
+}
+.data{
+    width: 110%;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 /* https://www.youtube.com/watch?v=GdrbE-s5DgQ&t=484s */

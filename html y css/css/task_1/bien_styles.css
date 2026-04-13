@@ -36,8 +36,8 @@ overflow:visible ;
 
 
 .contenidos:active {
-  transform: scale(0.95);
-  transition: transform 0.1s ease;
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
 }
 
 /* .contenidos:checked ~ .content {
@@ -51,7 +51,7 @@ background-color: rgba(63, 71, 69, 0.199);
     height: 10%;
     top: 37%;
     padding-top: 20px;
-    padding-bottom: 15px;
+    padding-bottom: 17px;
         
 }
 .link{

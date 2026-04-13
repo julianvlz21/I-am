@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #ffffff;
+    /* background:linear-gradient(to right, rgb(0, 0, 0), rgb(15, 15, 17), rgb(44, 33, 18), rgb(17, 14, 4), rgb(12, 9, 1)); */
+    background-image: url(../image/fondo_pets.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+section{
+    display: flex;
+    width: 600px;
+    height: 430px;
+}
+
+section img {
+    width: 0px;
+    flex-grow: 1;
+    object-fit: over;
+    opacity: .8;
+    transition: .5s ease;
+}
+section img:hover{
+    width: 300px;
+    opacity: 1;
+    filter:contrast(120%)
+}
+
+h2 {
+    margin-bottom: 2rem;
+    color: #fff6c0;
+}
+
+p {
+    margin-bottom: 0.5rem;
+    justify-content: center;
+}
