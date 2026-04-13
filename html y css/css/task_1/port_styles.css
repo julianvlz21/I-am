@@ -36,7 +36,7 @@ a:hover {
     /*
     font-size: 18px;*/
 }
-header {
+header.tituprin {
     position: relative;
     padding: 0 2rem;
     background-image: url(../image/paisaje.jpg);
@@ -111,13 +111,40 @@ section .myself:active {
 }
 
 #about_me{
-    padding-top: 2%;
+    padding: 2% 0;
 }
-
+/* projects */
 #projects{
-    padding-top: 2%;
-
+    background-color: #c96100;
+    padding-top: 0;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    align-items:0;
+    display: grid;
+    grid-template-areas:'projects projects projects'
+                        'professional profesional personal'
+                        'studies entrepreneurship personal';
 }
+
+.titupro {
+    color: #fff6c0;
+    font-weight: bold;
+    font-size: 20px;
+    grid-area: projects;
+    position: relative;
+    background-image: url(../image/paisaje.jpg);
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+}
+
+.professional{
+    background-color: rgb(0, 0, 0);
+    margin: 0%;
+}
+.studies{
+    background-color: rgb(182, 153, 90);
+}
+
 
 #contact{
     padding-top: 2%;

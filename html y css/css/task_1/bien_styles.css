@@ -41,7 +41,7 @@ overflow:visible ;
 }
 
 /* .contenidos:checked ~ .content {
-  animation: fadeIn 0.5s forwards;
+    animation: fadeIn 0.5s forwards;
 } */
 
 .contenidos:hover {
