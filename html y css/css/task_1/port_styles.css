@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    outline: 1px solid red;
 }
 
 body {
@@ -53,13 +54,12 @@ section {
 }
 
 h2 {
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     color: #fff6c0;
 }
 
 h3{
-    margin-bottom: 1rem;
-
+    margin: 1rem 0;
 }
 
 p {
@@ -114,37 +114,55 @@ section .myself:active {
     padding: 2% 0;
 }
 /* projects */
+
+#projects * {
+    margin: 0;
+    padding: 0;
+}
+
 #projects{
+    height: 20%;
     background-color: #c96100;
-    padding-top: 0;
+
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    align-items:0;
     display: grid;
     grid-template-areas:'projects projects projects'
-                        'professional profesional personal'
-                        'studies entrepreneurship personal';
+                        'tituprof tituprof titupre'
+                        'professional professional personal';
+    grid-template-rows: 10% 10% auto;
 }
 
 .titupro {
-    color: #fff6c0;
-    font-weight: bold;
-    font-size: 20px;
     grid-area: projects;
+    color: #fff6c0;
+    font-size: 20px;
     position: relative;
     background-image: url(../image/paisaje.jpg);
     background-position: center;
     background-size: cover;
-    align-items: center;
+}
+
+.tituprof {
+    grid-area: tituprof;
+
 }
 
 .professional{
     background-color: rgb(0, 0, 0);
-    margin: 0%;
-}
-.studies{
-    background-color: rgb(182, 153, 90);
+    grid-area: professional;
+    display: flex;
 }
 
+.titupre{
+    background-color: rgb(21, 46, 46);
+    grid-area: titupre;
+    text-align: center;
+}
+
+.personal{
+    background-color: rgb(235, 167, 21);
+    grid-area: personal;
+}
 
 #contact{
     padding-top: 2%;
