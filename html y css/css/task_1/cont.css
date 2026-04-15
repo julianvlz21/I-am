@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: rgb(44, 44, 43);
+}
+
+header{
+    background-color: aliceblue;
+}
+
+form {
+    background-color: antiquewhite;
+    margin-right: 50%;
+}
+
+#data {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 5% 0 25% 25%;
+}   
