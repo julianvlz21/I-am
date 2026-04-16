@@ -9,7 +9,11 @@
 
 </head>
 <body>
+    <button class="video_fondo">
+        <video src="../../css/videos/18458403-hd_1920_1080_24fps.mp4" autoplay muted loop></video>
+    </button>
     <header>
+        <a href="portafolios.html"><i class="fa-solid fa-angle-left"></i></a>
         <h1>Contact me</h1>
     </header>
     
@@ -18,16 +22,14 @@
             <aside>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident, numquam sunt facilis molestiae sed culpa deleniti voluptate explicabo debitis! Natus fugiat aspernatur doloremque sapiente vitae a minima ad blanditiis?</p>
             </aside>
-            <form action="">
-                    <pre> 
-                        <input type="text" placeholder="Enter your name" name="name" required>
-                        <input type="text" placeholder="Enter your lastname" name="lastname" required>
-                        <input type="email" placeholder="Example@email.com" name="email" required>
-                        <input type="number" placeholder="cellphone" name="number" >
-                        <label for="briht">Enter your date of birth</label>
-                        <input type="datetime" id="briht">
-                        <button type="submit">Enviar</button>
-                    <pre> 
+            <form class="inputs"> 
+                        <input class="boxes" type="text" placeholder="Enter your name" name="name" required>
+                        <input class="boxes" type="text" placeholder="Enter your lastname" name="lastname" required>
+                        <input class="boxes" type="email" placeholder="Example@email.com" name="email" required>
+                        <input class="boxes" type="number" placeholder="Cellphone" name="number" >
+                        <label class="bd boxes" for="briht">Enter your date of birth</label>
+                        <input class="boxes" type="date" id="briht">
+                        <button class="send" type="submit"><i class="fa-solid fa-cloud-arrow-up"></i></button> 
             </form>
         </section>
     </main>

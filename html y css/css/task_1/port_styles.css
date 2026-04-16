@@ -24,15 +24,13 @@ a {
     text-decoration: none;
     color: #fff;
     font-size: 1rem;
-    /* transition: 1s, width 1s, height 1s; */
+    transition: .5s, width 1s, height 1s;
 }
 
 a:hover {
     color: #fff6c0;
     background-color: #0000003b;
-    height: 0;
-    width: 0;
-    padding: 35% 20%;
+    padding: 21px 10px;
     margin: 0;
     /*
     font-size: 18px;*/
