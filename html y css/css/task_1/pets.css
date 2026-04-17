@@ -23,10 +23,23 @@ header {
 }
 
 .img-pets {
-    display: flex;
-    flex-direction: row;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    text-align: center;
+    gap: 2rem;    
+    /* padding-left: 10%; */
 }
+
+figure article {
+    color: #fff6c0;
+    font-size: 17px;
+    font-weight: bolder;
+    text-align: center;  
+}
+
+
+
 
 .samy, .lola, .mery, .vacky, .lulu, .messi {
     width: 300px;     
