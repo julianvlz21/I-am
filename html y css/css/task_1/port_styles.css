@@ -65,9 +65,8 @@ p {
     justify-content: center;
 }
 .bar {
-    width: 100%;
+    width: auto;
     height: 60px;
-    max-width: 1200px;
     margin: 0;
     display: flex;
     align-items: center;
@@ -120,15 +119,16 @@ section .myself:active {
 
 #projects{
     height: 20%;
-    background-color: #c96100;
-
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     display: grid;
     grid-template-areas:'projects projects projects'
                         'tituprof tituprof titupre'
                         'professional professional personal';
     grid-template-rows: 12% 12% auto;
+    grid-template-columns: 30% 30% 40%;
     gap: .001rem;
+    justify-content: space-around;
+    margin: 0 10%;
     /* flex-wrap: wrap; */
 }
 
@@ -136,37 +136,44 @@ section .myself:active {
     grid-area: projects;
     color: #fff6c0;
     font-size: 20px;
-    position: relative;
-    background-image: url(../image/paisaje.jpg);
+    text-align: center;
+    background-image: url(../image/paisaje\ amarillo.jpg);
     background-position: center;
     background-size: cover;
 }
 
-.tituprof {
+.tituporf {
+    background-color: #c96100;
     grid-area: tituprof;
     text-align: center;
+    color: #fff6c0;
 }
 
 .professional{
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(235, 167, 21, 0.11);
     grid-area: professional;
     display: flex;
     padding: 0 .05rem;
 }
 
 .studies{
-    background-color: rgba(255, 115, 0, 0.274);
+    background-color: rgba(235, 167, 21, 0.11);
+    border-right: 3px solid #ffffffff ;
 }
 
 .titupre{
-    background-color: rgb(21, 46, 46);
+    background-color: #c96100;
     grid-area: titupre;
     text-align: center;
+    border-left: 3px solid #ffffffff;
+    color: #fff6c0;
 }
 
 .personal{
-    background-color: rgb(235, 167, 21);
+    background-color: rgba(235, 167, 21, 0.11);
     grid-area: personal;
+    border-left: 3px solid #ffffffff;
+
 }
 
 #contact{
@@ -180,5 +187,23 @@ section .myself:active {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media (max-width: 640px) {
+    #projects {
+        margin: 0;
+    } 
+    
+    .professional{
+        display: flex;
+        flex-direction: column;
+    }
+    .studies {
+    background-color: rgba(235, 167, 21, 0.11);
+    border-bottom: 3px solid #ffffffff ;
+    border-right: none;
+    border-top: 3px solid #ffffffff ;
+    
+}
 }
 /* https://www.youtube.com/watch?v=GdrbE-s5DgQ&t=484s */

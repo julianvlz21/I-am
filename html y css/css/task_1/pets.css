@@ -16,6 +16,8 @@ body {
     background-position: center;
 }
 header {
+    height: 3rem;
+    width: auto;
     display: flex;
     background-color: aliceblue;
     align-items: center;
@@ -25,40 +27,46 @@ header {
 .img-pets {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     text-align: center;
-    gap: 2rem;    
-    /* padding-left: 10%; */
+    gap: 2rem;
 }
 
 figure article {
     color: #fff6c0;
     font-size: 17px;
     font-weight: bolder;
-    text-align: center;  
+    /* text-align: center; */
 }
 
-
-
-
-.samy, .lola, .mery, .vacky, .lulu, .messi {
+.pets{
     width: 300px;     
     height: 300px; 
     object-fit: cover;
+    padding-bottom: 3rem;
+    background-color: #e2e0e0;
+    border: 5px solid #e2e0e0;
 }
 
-
-h2 {
-    margin-bottom: 8rem;
-    color: #fff6c0;
+.pets:hover {
+    transition: .5s;
+    scale: 1.1;
+    cursor: pointer;
 }
 
-h3{
-    color: #fff6c0;
+figure {
+    border: 1px solid #e2e0e0;
+    background-color: rgba(0, 0, 0, 0.39);
+    /* padding: 10px; */
+}
+
+:modal {
     
 }
 
-p {
-    margin-bottom: 0.5rem;
-    justify-content: center;
-}
+/* figure:focus {
+    transform: scale(1.6);
+    align-items: center;
+    background-color: transparent;
+    border: none;
+} */
