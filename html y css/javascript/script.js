@@ -1,13 +1,10 @@
-const imgpets =
-document.getElementById("img-pets");
-
 const sammy =
 document.getElementById("sammy");
 
 
-imgpets.addEventListener("click", () => {
-
-})
+sammy.addEventListener("click", () => {
+    sammy.showModal();
+});
 
 
 
