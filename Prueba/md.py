@@ -42,7 +42,7 @@ def update_info(students, id_search):
             for student in students:
                 if student.get('id') == int(id_search):
                     name = input("change name: ").lower()
-                    student('name') == name
+                    student['name'] = name
 
         elif option == "2":
             for student in students:
