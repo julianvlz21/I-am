@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio 3 — Generador de Contraseña</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F7F6F3;
+      --white:    #FFFFFF;
+      --ink:      #1A1A2E;
+      --mid:      #888FA0;
+      --border:   #E4E2DB;
+      --lime:     #B5E853;
+      --lime-dk:  #8DB83D;
+      --warn:     #F4A84A;
+      --red:      #EF5B5B;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .header .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--mid);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Consigna ── */
+    .consigna {
+      width: 100%;
+      max-width: 600px;
+      background: var(--ink);
+      color: #c9d4e8;
+      border-radius: 8px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      line-height: 1.75;
+    }
+    .consigna strong { color: var(--lime); }
+    .consigna code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      background: rgba(255,255,255,0.08);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .consigna ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+    .consigna li { margin-bottom: 0.25rem; }
+
+    /* ── Tarjeta principal ── */
+    .card {
+      width: 100%;
+      max-width: 600px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    /* ── Display contraseña ── */
+    .password-display {
+      background: var(--ink);
+      border-radius: 8px;
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 66px;
+    }
+    .password-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--lime);
+      letter-spacing: 0.08em;
+      word-break: break-all;
+      flex: 1;
+    }
+    .password-placeholder {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      color: #3a4060;
+      flex: 1;
+    }
+    .btn-copiar {
+      background: transparent;
+      border: 1px solid #334;
+      color: #8899aa;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .btn-copiar:hover { border-color: var(--lime); color: var(--lime); }
+
+    /* ── Control de longitud ── */
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .control-label span {
+      font-size: 0.82rem;
+      color: var(--mid);
+      font-weight: 500;
+    }
+    .control-label strong {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border);
+      outline: none;
+      margin-bottom: 1.5rem;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--ink);
+      cursor: pointer;
+    }
+
+    /* ── Checkboxes ── */
+    .opciones-titulo {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.8rem;
+    }
+    .opciones-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .opcion-check {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.8rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: border-color 0.2s;
+      user-select: none;
+    }
+    .opcion-check:hover { border-color: var(--ink); }
+    .opcion-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--ink);
+      cursor: pointer;
+    }
+
+    /* ── Barra de fortaleza ── */
+    .fortaleza-label {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .fortaleza-barra-bg {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .fortaleza-barra-fill {
+      height: 100%;
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.4s, background 0.4s;
+    }
+
+    /* ── Botón generar ── */
+    .btn-generar {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--ink);
+      color: var(--lime);
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+    .btn-generar:hover { opacity: 0.85; }
+
+    /* ── Stats ── */
+    .stats {
+      width: 100%;
+      max-width: 600px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      display: none;
+    }
+    .stat-card.visible { display: block; }
+    .stat-valor {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .stat-nombre {
+      font-size: 0.72rem;
+      color: var(--mid);
+      margin-top: 0.3rem;
+    }
+
+    /* ── Alerta ── */
+    .alerta {
+      width: 100%;
+      max-width: 600px;
+      background: #fff4e5;
+      border: 1px solid var(--warn);
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      color: #8a4a00;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .alerta.visible { display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="eyebrow">EJ — 03 · Variables y tipos</div>
+    <h1>Generador de Contraseña Segura</h1>
+  </div>
+
+  <div class="consigna">
+    <strong>🎯 Tu misión:</strong> Completa la lógica del generador de contraseñas con JavaScript.<br><br>
+    <strong>Debes aplicar:</strong>
+    <ul>
+      <li>Variables <code>const</code> para los conjuntos de caracteres (strings que no cambian)</li>
+      <li>Variable <code>let</code> para la contraseña que se va construyendo</li>
+      <li><code>Number()</code> para leer el rango de longitud y <code>typeof</code> para verificar</li>
+      <li><code>Boolean()</code> para leer los checkboxes con <code>.checked</code></li>
+      <li><code>Math.random()</code> + <code>Math.floor()</code> para seleccionar caracteres al azar</li>
+      <li>Calcula la "fortaleza": suma puntos por longitud y por tipos de caracteres activos</li>
+      <li>Muestra: longitud real, cantidad de tipos activos y nivel de fortaleza en las stat-cards</li>
+    </ul>
+  </div>
+
+  <!-- TARJETA PRINCIPAL -->
+  <div id="generatorPassword" class="card">
+
+    <!-- Display de contraseña -->
+    <div class="password-display">
+      <span class="password-placeholder">Genera tu contraseña →</span>
+      <button class="btn-copiar">Copiar</button>
+    </div>
+
+    <!-- Longitud -->
+    <div class="control-label">
+      <span>Longitud</span>
+      <strong id="longitudValor" >12</strong>
+    </div>
+    <input id="lengthPassword" type="range" min="6" max="32" value="12" step="1" 
+    oninput="actualizarLongitud()"/>
+
+    <!-- Tipos de caracteres -->
+    <div class="opciones-titulo">Incluir caracteres</div>
+    <div class="opciones-grid">
+      <label class="opcion-check">
+        <input id="mayuscula" type="checkbox" checked /> Mayúsculas (A-Z)
+      </label>
+      <label class="opcion-check">
+        <input id="minuscula" type="checkbox" checked /> Minúsculas (a-z)
+      </label>
+      <label class="opcion-check">
+        <input id="numeros" type="checkbox" checked /> Números (0-9)
+      </label>
+      <label class="opcion-check">
+        <input id="simbolos" type="checkbox" /> Símbolos (!@#$)
+      </label>
+    </div>
+
+    <!-- Barra de fortaleza -->
+    <div class="fortaleza-label">Fortaleza: —</div>
+    <div class="fortaleza-barra-bg">
+      <div class="fortaleza-barra-fill"></div>
+    </div>
+
+    </div>
+
+    <!-- Barra de fortaleza -->
+    <div class="fortaleza-label">Fortaleza: —</div>
+    <div class="fortaleza-barra-bg">
+      <div class="fortaleza-barra-fill"></div>
+    </div>
+
+    <button id="btn-generator" class="btn-generar">⚙ Generar contraseña</button>
+  </div>
+
+  <!-- ALERTA -->
+  <div class="alerta">⚠️ Mensaje de error aquí</div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-valor">—</div>
+      <div class="stat-nombre">Caracteres</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-valor">—</div>
+      <div class="stat-nombre">Tipos activos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-valor">—</div>
+      <div class="stat-nombre">Nivel</div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════╗
+       ║  ✏️  ESCRIBE TU JAVASCRIPT AQUÍ ABAJO    ║
+       ╚══════════════════════════════════════════╝ -->
+  <script src="script.js">
+    // PISTAS:
+    // 1. Agrega IDs a todos los elementos que necesites manipular
+    // 2. Define los conjuntos de caracteres con const:
+    //      const MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //      const MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
+    //      const NUMEROS    = "0123456789";
+    //      const SIMBOLOS   = "!@#$%^&*()-_=+[]{}|;:,.<>?";
+    // 3. El range actualiza el número visible en tiempo real (evento "input")
+    // 4. Al generar:
+    //    a. Lee los checkboxes con .checked (devuelve Boolean)
+    //    b. Si ninguno está marcado, muestra la alerta
+    //    c. Construye un string "pool" juntando solo los tipos activos
+    //    d. Recorre con un bucle for (longitud veces) y elige letra aleatoria:
+    //         Math.floor(Math.random() * pool.length)
+    // 5. Calcula fortaleza: débil / media / fuerte / muy fuerte
+    // 6. Actualiza la barra de fortaleza (width %) y su color
+    // 7. Muestra las stat-cards con los datos finales
+    // 8. El botón "Copiar" usa navigator.clipboard.writeText(contraseña)
+
+  </script>
+
+</body>
+</html>
