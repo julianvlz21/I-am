@@ -1,0 +1,20 @@
+## método arrays
+array.reduce ((acumulador, CadaElementoDeFila) => acumulador "+-*/..."CadaElementoDeFila,posición 0);
+
+## métodos de string
+
+.concat(); para concatenar.
+
+.slice (posición de inicio, posición final);
+.slice (0,10);
+.substr (0,10); lo mismo, pero solo para cadena de caracteres.
+
+.split (","); crea un array "[]" y tienes que poner con que separador ",".
+
+.toUpperCase();
+.toLowerCase();
+
+.indexOf("palabra"); te devuelve la posición.
+
+.includes(); devuelve un booleano si encuentra la palabra.
+
