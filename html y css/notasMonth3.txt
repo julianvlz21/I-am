@@ -1,5 +1,5 @@
 ## método arrays
-array.reduce ((acumulador, CadaElementoDeFila) => acumulador "+-*/..."CadaElementoDeFila,posición 0);
+array.reduce ((acumulador, CadaElementoDeFila) => acumulador "+-*/%…" CadaElementoDeFila,posición 0);
 
 ## métodos de string
 
@@ -17,3 +17,7 @@ array.reduce ((acumulador, CadaElementoDeFila) => acumulador "+-*/..."CadaElemen
 .indexOf("palabra"); te devuelve la posición.
 
 .includes(); devuelve un booleano si encuentra la palabra.
+
+## week 2
+* Monday
+

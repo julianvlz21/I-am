@@ -220,18 +220,19 @@ const total = disponibles.reduce( /* callback */, 0 );
 
   function obtenerDisponibles() {
     // ✏️ Completa el callback de filter
-    return productos.filter( /* tu callback */ );
+    return productos.filter( /* tu callback */ p => {return p.disponible});
   }
 
   function obtenerNombres() {
     // ✏️ Completa el callback de map
-    return productos.map( /* tu callback */ );
-  }
+    return productos.map( /* tu callback */ p => {return p.nombre});
+  };
+  
 
   function obtenerTotal() {
-    const disponibles = productos.filter( /* mismo callback de filter */ );
+    const disponibles = productos.filter( /* mismo callback de filter */p => {return p.disponible});
     // ✏️ Completa el callback de reduce
-    return disponibles.reduce( /* tu callback */, 0 );
+    return disponibles.reduce( /* tu callback */(acc,p) => acc + p.precio, 0);
   }
 
   // ════════════════════════════════════════════════════════
