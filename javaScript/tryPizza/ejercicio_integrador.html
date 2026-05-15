@@ -512,17 +512,30 @@
      JAVASCRIPT — ESCRIBE AQUÍ TU SOLUCIÓN
      Lee con cuidado qué se espera de cada función antes de empezar.
 ════════════════════════════════════════════════════════════ -->
-<script>  
+<script>
+
   function crearGestor(){
-    let _empleados, historial = []
-
+    let registro = {
+      _empleados: [],
+      _historial: [],
+  
+      agregar(empleado) {
+        this._empleados.push(empleado);
+        this._historial.push(Date.now());
+      },
     
-    agregar(empleado, callback){
-      empleados.push(empleado);
+      eliminar(id) {
+        this._empleados = this._empleados.filter(empleado => empleado.id === id);
+      },
 
+      buscar(texto) {
+        return this._empleados.filter(empleado => empleado.nombre.toLowerCase().includes(texto.toLowerCase()));
+      },
     }
-
+    return registro;
   }
+  
+  
   // ════════════════════════════════════════════════════════
   //  1. crearGestor() — CLOSURE + THIS
   //
@@ -578,8 +591,7 @@
   //
   //  Llama a crearGestor() y guarda el resultado en "const gestor"
   // ════════════════════════════════════════════════════════
-
-
+  const gestor = crearGestor();
 
   // ════════════════════════════════════════════════════════
   //  3. agregarEmpleado() — DOM + CLOSURE + CALLBACK
@@ -594,21 +606,37 @@
   //    que muestre una notificación de éxito con el nombre del empleado
   //  · Limpiar el formulario después de agregar
   // ════════════════════════════════════════════════════════
-  function  agregarEmpleado(){
-    let nombre = document.getElementById("inputNombre");
-    let departamento = document.getElementById("inputDept");
-    let salario = document.getElementById("inputSalario");
-    let antiguedad = document.getElementById("inputAntiguedad");
 
-    if (!nombre || !departamento || !salario || !antiguedad){
-      console.log("Datos vacios");
+  function agregarEmpleado() {
+    const nombre = document.getElementById('inputNombre').value;
+    const dept = document.getElementById('inputDept').value;
+    const salario = Number(document.getElementById('inputSalario').value);
+    const antiguedad = Number(document.getElementById('inputAntiguedad').value);
+
+    if (!nombre || !dept || !salario || !antiguedad) {
+      alert('¡¡ERROR!! Todos los campos son obligatorios');
+      return;
     }
 
-    let id = date.now();
-    console.log(id);
+    class Empleado {
+      constructor(id, nombre, dept, salario, antiguedad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.dept = dept;
+        this.salario = salario;
+        this.antiguedad = antiguedad;
+      }
+    }
 
-    class 
-    
+    const empleado = new Empleado(Date.now(), nombre, dept, salario, antiguedad);
+
+    alert("Todo firme");
+
+    gestor.agregar(empleado)
+
+    console.log(empleado);
+    console.log(gestor._empleados);
+
   }
 
 
@@ -620,7 +648,43 @@
   //  · Llamar a gestor.eliminar(id, callback)
   //  · El callback debe mostrar una notificación de aviso con el nombre
   // ════════════════════════════════════════════════════════
+  function eliminarEmpleado(id, _empleados) {
+    if (_empleados.id === id){
+      const indice = _empleados.indexOf(id);
+      const _eliminar = _empleados.splice(indice, 1);
+    }
+    
+      gestor.eliminar(_eliminar);
+    // const encontrar = _empleados.find(empleado => empleado.id === id);
+    
+  
 
+  }
+  // Elimina un empleado por id
+      eliminar(id, callback) {
+        // Buscamos el empleado antes de eliminarlo para el callback
+        const empleado = _empleados.find(e => e.id === id);
+
+        // filter() con callback para quitar el empleado del array privado
+        const nuevosEmpleados = _empleados.filter(e => e.id !== id);
+        // Vaciamos y rellenamos el array privado (sin romper la referencia)
+        _empleados.length = 0;
+        nuevosEmpleados.forEach(e => _empleados.push(e));
+
+        if (empleado) {
+          _registrar(`Empleado eliminado: ${empleado.nombre}`);
+        }
+
+        // Ejecutar callback si es función
+        if (typeof callback === 'function' && empleado) {
+          callback(empleado);
+        }
+
+        // Actualizar DOM
+        renderizarLista(this.obtenerEmpleados());
+        actualizarEstadisticas();
+        actualizarHistorial();
+      }
 
 
   // ════════════════════════════════════════════════════════
@@ -631,6 +695,7 @@
   //  · Llamar a gestor.buscar(texto) que usa filter() internamente
   //  · Renderizar en el DOM solo los empleados que coincidan
   // ════════════════════════════════════════════════════════
+
 
 
 
