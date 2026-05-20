@@ -524,8 +524,19 @@
         this._historial.push(Date.now());
       },
     
-      eliminar(id) {
-        this._empleados = this._empleados.filter(empleado => empleado.id === id);
+      eliminar(id, callback) {
+        // Busca la primera coincidencia
+        const empleadoEliminado = _empleados.find(em => em.id === id);
+
+        // Se actualiza el array sin el objeto sin el id que tiene coincidencia el objeto
+        this._empleados = _empleados.filter (em => em.id !== id);
+
+        this._historial.push(`Emppleado eliminada ${empleadoEliminado.nombre}`);
+
+        if (typeof callback == "function"){
+          callback(eliminarEmpleado)
+        }
+
       },
 
       buscar(texto) {
@@ -648,43 +659,18 @@
   //  · Llamar a gestor.eliminar(id, callback)
   //  · El callback debe mostrar una notificación de aviso con el nombre
   // ════════════════════════════════════════════════════════
-  function eliminarEmpleado(id, _empleados) {
-    if (_empleados.id === id){
-      const indice = _empleados.indexOf(id);
-      const _eliminar = _empleados.splice(indice, 1);
+  function eliminarEmpleado(id) {
+    // if (_empleados.id === id){
+    //   const indice = this._empleados.indexOf(id);
+    //   const _eliminar = _empleados.splice(indice, 1);
+      
+    // }
+    
+    gestor.eliminar(id, (empleado) => {
+      MostrarNotification (`Empleado eliminado ${empleado.nombre}`);
+      });
     }
-    
-      gestor.eliminar(_eliminar);
-    // const encontrar = _empleados.find(empleado => empleado.id === id);
-    
-  
-
-  }
-  // Elimina un empleado por id
-      eliminar(id, callback) {
-        // Buscamos el empleado antes de eliminarlo para el callback
-        const empleado = _empleados.find(e => e.id === id);
-
-        // filter() con callback para quitar el empleado del array privado
-        const nuevosEmpleados = _empleados.filter(e => e.id !== id);
-        // Vaciamos y rellenamos el array privado (sin romper la referencia)
-        _empleados.length = 0;
-        nuevosEmpleados.forEach(e => _empleados.push(e));
-
-        if (empleado) {
-          _registrar(`Empleado eliminado: ${empleado.nombre}`);
-        }
-
-        // Ejecutar callback si es función
-        if (typeof callback === 'function' && empleado) {
-          callback(empleado);
-        }
-
-        // Actualizar DOM
-        renderizarLista(this.obtenerEmpleados());
-        actualizarEstadisticas();
-        actualizarHistorial();
-      }
+        
 
 
   // ════════════════════════════════════════════════════════
@@ -695,7 +681,9 @@
   //  · Llamar a gestor.buscar(texto) que usa filter() internamente
   //  · Renderizar en el DOM solo los empleados que coincidan
   // ════════════════════════════════════════════════════════
+    function buscarEmpleados(){
 
+    }
 
 
 
@@ -725,6 +713,9 @@
   //  Los departamentos tienen clases CSS ya definidas:
   //  .dept-tech / .dept-ventas / .dept-rrhh / .dept-diseno
   // ════════════════════════════════════════════════════════
+  function renderizarLista(empleados){
+    
+  }
 
 
 
