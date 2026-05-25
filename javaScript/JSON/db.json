@@ -1,0 +1,43 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Ana",
+      "email": "ana@mail.com",
+      "edad": 28
+    },
+    {
+      "id": "2",
+      "nombre": "Luis",
+      "email": "luis@mail.com",
+      "edad": 34
+    },
+    {
+      "id": "3",
+      "nombre": "Marta",
+      "email": "marta@mail.com",
+      "edad": 22
+    },
+    {
+      "usuario": "asd",
+      "email": "asd@mail.com",
+      "edad": "2",
+      "id": "PvtS_0SU0lY"
+    }
+  ],
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Laptop",
+      "precio": 1200,
+      "stock": 5
+    },
+    {
+      "id": "2",
+      "nombre": "Mouse",
+      "precio": 25,
+      "stock": 40
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

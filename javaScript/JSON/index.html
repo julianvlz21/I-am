@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <label for="">agregar usuario: </label>
+        <input id="usuario" type="text">
+        <label for="">agredar email</label>
+        <input id="email" type="email">
+        <label for="">edad</label>
+        <input id="edad" type="email">
+        <button id="btn">enviar</button>
+    </section>
+    
+    <script>
+        const btn = document.getElementById("btn");
+
+        async function agregaAJson(){
+            let user = document.getElementById("usuario");
+            let mail = document.getElementById("email");
+            let age = document.getElementById("edad");
+
+            const datos = {
+                usuario: user.value,
+                email: mail.value,
+                edad: age.value,            
+                }
+
+            console.log(datos);
+            
+
+            if (!datos){
+                alert("Dato vacio");
+            }
+
+            const response = await fetch("http://localhost:5000/usuarios",{ 
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(datos)
+            });
+
+            if (response.ok){
+            const data = await response.json();
+            console.log("Usuario enviado:", data);
+            } else {
+            console.error("Error al enviar el usuario:", response.statusText);
+            }
+        }
+
+        btn.addEventListener("click", agregaAJson);
+            
+    </script>
+</body>
+</html>
