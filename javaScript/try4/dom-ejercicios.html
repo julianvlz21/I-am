@@ -923,7 +923,21 @@
   //  #salida-3: tagName, id y className del elemento.
   //  Si no se encuentra, muestra un mensaje de error.
   // ════════════════════════════════════════════════════
-    
+  const input3 = document.getElementById("input-3");
+  const btn3 = document.getElementById("btn-3");
+  const salida3 = document.getElementById("salida-3");
+
+    btn3.addEventListener("click", () => {
+      const valor = input3.value;
+      const datos = document.querySelector(valor);
+
+      if (datos) {
+        salida3.innerHTML = `
+        <p>TagName: ${datos.tagName}</p>
+        <p>TagName: ${datos.className}</p>
+        `;
+      }
+    })
 
 
   // ════════════════════════════════════════════════════
